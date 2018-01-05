@@ -5,7 +5,7 @@
          由于github文件大小限制，已经压缩。解压即可。
 3. result-simple-class.json是总体分类保存的结果
 
-# 时间说明
+## 时间说明
 
 1. r[num]文件及result-1-38.json 收集的结果是2018-11-24~2018-12-24一个月期间天猫销量结果
 2. result-simple-class.json是
