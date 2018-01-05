@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 import scrapy
 from taobaospider.items import TaobaoItem
@@ -7,12 +7,11 @@ from taobaospider.items import TaobaoItem
 class TaobaoSpider(scrapy.Spider):
     name = 'taobao'
     allowed_domains = ['taobao.com']
+    #为了爬虫稳定，这个url已经保存到本地
     start_urls = ['file:///C:/Users/Administrator/Desktop/new/taobao.html']
 
     def parse(self, response):
-        #lis = response.xpath('/html/body/div[4]/div[1]/div[1]/div[1]/div/ul/li/a') 
- 
-        
+                
         divs = response.xpath('/html/body/div[4]/div[1]/div[1]/div[1]/div/div/div/div[1]/div')
 
         for div in divs:
