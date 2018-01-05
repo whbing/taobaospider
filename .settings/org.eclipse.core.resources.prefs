@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//taobaospider/items.py=utf-8
+encoding//taobaospider/pipelines.py=utf-8
+encoding//taobaospider/settings.py=utf-8
+encoding//taobaospider/spiders/taobao.py=utf-8
+encoding//taobaospider/spiders/taobaodata.py=utf-8
+encoding//taobaospider/spiders/taobaodata2.py=utf-8
+encoding/str2int.py=utf-8
