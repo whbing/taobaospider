@@ -65,3 +65,30 @@ pyOpenSSL是Python的OpenSSL接口，安装命令：
 
 ---
 
+# 2. 本项目的运行
+
+#### 2.1 下载或克隆本项目至本地目录
+
+目录结构(主要)：
+
+```
+taobaospider(or your folder)
+	|
+	|-scrapy.cfg
+	|-.settings
+	|-result
+	|-taobaospider
+		   |
+		   |-__init__.py
+		   |-items.py
+		   |-middlewares.py
+		   |-pipelines.py
+		   |-settings.py
+		   |-spiders
+		       |
+		       |-__init__.py
+		       |-taobao.py
+		       |-taobaodata.py
+		       
+
+```
