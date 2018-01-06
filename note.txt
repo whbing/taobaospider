@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+
+import scrapy
+from taobaospider.items import TaobaospiderItem
+
+class TaobaoSpider(scrapy.Spider):
+    name = 'taobao'
+    allowed_domains = ['taobao.com']
+    start_urls = ['http://taobao.com/']
+
+    def parse(self, response):
+        #lis = response.xpath('/html/body/div[4]/div[1]/div[1]/div[1]/div/ul/li/a') 
+        divs = response.xpath('/html/body/div[4]/div[1]/div[1]/div[1]/div/div') 
+
+        for div in divs:
+            item = TaobaospiderItem()
+            item['class1'] = li.xpath('div/div/h5/a/text()').extract()
+            item['class2'] = li.xpath('div/div/p/a/text()').extract()
+
+            
+            '''
+            class2_url = li.xpath('@href').extract()[0]
+            if class2_url :
+                class2_url = class2_url if "https:" in class2_url else ("http:"+class2_url)
+                print class2_url
+            else :
+                print "class2 url is none"
+                continue
+            '''
+            
+            #item['class2'] = li.xpath('@href').extract()
+            #item['class3'] = li.xpath('div/text()').extract()
+
+            #yield scrapy.Request(url=class2_url,meta={'item':item},callback=self.parse_class2)
+            yield item
+        
+    def parse_class2(self,response):
+        class2_lis = response.xpath('//*[@id="guid-312344"]/div/div/ul/li') 
+        if not class2_lis:
+            self.log("the class2 DOM is not fount!")
+        
+        item = response.meta['item']  
+        
+        if class2_lis:      
+        
+            for class2_li in class2_lis:
+                print '11------------------------------------------------'
+                print class2_li.extract()
+                #item['class2'] = class2_li.xpath("p/a/text()").extract()
+                #item['class3'] = class2_li.xpath("dl/dd/a/text()").extract()
+                item['class2'] = class2_li
+                item['class3'] = [333333333,"oo"]
+
+        yield item
+
+#########################################################
+
+将内容输出到html文件
+def parse(self,response):
+	fp = open('l.html','w')            
+	fp.write(response.body)            
+	fp.close()
+	print response.bosy
+        
+######################################################
+

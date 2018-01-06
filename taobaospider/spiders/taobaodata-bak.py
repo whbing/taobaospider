@@ -43,10 +43,11 @@ class TaobaodataSpider(scrapy.Spider):
     
     def start_requests(self):
         
-               
+        #以下代码为读取整个json文件（按行解析），由于淘宝限制可能出错。taobaodata.py为一行一行的手动加载       
+        
         try:
             data =  open(r'D:\javaTools\EclipseWork1\taobaospider\class.json','r')
-            print '=================='
+            print '=======read data success==========='
             
             for line in data.readlines():
                 dic = json.loads(line)            
@@ -63,7 +64,6 @@ class TaobaodataSpider(scrapy.Spider):
         except Exception,e:
             print '++++++++++ecception+++++++++++)'
             print str(e)
-
             
         '''    
         keys= ["男装","女装"]
@@ -75,7 +75,7 @@ class TaobaodataSpider(scrapy.Spider):
             yield scrapy.Request(url)
         '''
     def parse(self, response):
-        #获取到每一个框框
+        #获取到每一个商品框
         divs = response.xpath('//*[@id="J_ItemList"]/div')
         if divs:
             print '-----------succces-----'
@@ -94,9 +94,7 @@ class TaobaodataSpider(scrapy.Spider):
                 item['sales'] = div.xpath('div/p[3]/span[1]/em/text()')[0].extract().strip() if len(div.xpath('div/p[3]/span[1]/em/text()'))>0 else 'null'
                 item['store'] = div.xpath('div/div[3]/a/text()')[0].extract().strip() if len(div.xpath('div/div[3]/a/text()'))>0 else 'null'
                 item['class1'] = class1 
-                item['class2'] = class2 
-                
-    
+                item['class2'] = class2    
         
                 yield item
     
