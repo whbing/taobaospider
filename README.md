@@ -14,9 +14,9 @@ Python 2.7.12 (v2.7.12:d33e0cf91556, Jun 27 2016, 15:24:40) [MSC v.1500 64 bit (
 
 ```
 
-### 2. 安装pip(其他包管理也可)
+### 2. 安装pip(或其他包管理工具)
 
-windows:点击https://pypi.python.org/pypi/pip 下载pip-6.1.1.tar.gz (md5, pgp)
+windows:点击https://pypi.python.org/pypi/pip 下载pip-\*.\*.\*.tar.gz (md5, pgp)
 
 解压后进入文件夹执行：`python setup.py install`
 
@@ -47,7 +47,7 @@ pyOpenSSL是Python的OpenSSL接口，安装命令：
 
 ### 7.安装win32py （windows需要）
 
-提供win32api，点击 http://sourceforge.net/projects/pywin32/files/pywin32/(http://sourceforge.net/projects/pywin32/files/pywin32/)下载
+提供win32api，点击 http://sourceforge.net/projects/pywin32/files/pywin32/ 下载
 
 ### 8.安装Scrapy
 
