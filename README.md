@@ -55,9 +55,13 @@ pyOpenSSL是Python的OpenSSL接口，安装命令：
 
 `pip install scrapy`
 
+并将scrapy加入环境变量
 
 ### 9.测试是否scrapy可用:
 
 `scrapy bench`
 
 安装完成
+
+---
+
