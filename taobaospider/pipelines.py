@@ -10,7 +10,7 @@ import json
 class TaobaospiderPipeline(object):
     def __init__(self):
         #self.file = codecs.open('class.json', 'wb', encoding='utf-8')
-        self.file = codecs.open('r1-women-clothing.json', 'wb', encoding='utf-8')
+        self.file = codecs.open('yourname.json', 'wb', encoding='utf-8')
         #self.file = codecs.open('result-1-2-women-clothing.json', 'a+', encoding='utf-8')
              
     def process_item(self, item, spider):

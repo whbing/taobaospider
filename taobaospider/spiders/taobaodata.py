@@ -7,7 +7,6 @@ import os
 class TaobaodataSpider(scrapy.Spider):
     name = 'taobaodata'
     allowed_domains = ['tmall.com']
-    #start_urls = ['https://list.tmall.com/search_product.htm?q=%C4%D0%D7%B0']
     start_urls = []
     headers = {
         "Accept":"*/*",
@@ -48,14 +47,8 @@ class TaobaodataSpider(scrapy.Spider):
         try:
             #data =  {"class2": ["羽绒服女", "毛呢外套女", "毛衣女", "针织衫女", "棉服女", "连衣裙", "气场外套女装", "风衣女装", "裤子女装", "卫衣女装", "T恤女装", "阔腿裤女装", "衬衫女装", "牛仔裤女装", "半身裙", "大码女装", "时尚套装女", "西装女", "打底衫女", "夹克女", "皮衣女", "皮草女", "妈妈装", "民族舞台女装", "腔调女装", "私服名媛女装", "甜美风女装", "文艺风女装", "街头风女装", "原创女装", "通勤风女装", "婚纱礼服"], "class1": "女装"}
             #data =  {"class2": ["女鞋", "短靴", "切尔西", "长靴", "袜靴", "小白鞋", "运动鞋女", "帆布鞋", "雪地靴", "乐福鞋", "松糕厚底", "玛丽珍鞋", "低跟", "中跟", "高跟", "妈妈鞋", "男鞋", "靴子", "休闲鞋", "雕花布洛克", "板鞋", "帆布鞋", "运动风", "高帮鞋", "豆豆鞋", "乐福鞋", "船鞋", "增高鞋", "正装商务", "户外休闲鞋", "爸爸鞋"], "class1": "鞋靴"}
-            #data = {"class2": ["女士钱包","单肩包女","斜跨包女","手提包女","手拿包女","腰包女","胸包女","化妆包女", "双肩包女", "旅行箱女", "拉杆箱女"], "class1": "女箱包"}
-            #data = {"class2": ["男士钱包","单肩包男","斜跨包男","手提包男","手拿包男","腰包男","胸包男","化妆包男", "双肩包男", "旅行箱男", "拉杆箱男"], "class1": "男箱包"}
-            #data = {"class2": ["平板电脑", "电脑主机", "数码相机", "电玩动漫", "单反相机", "鼠标键盘", "无人机"], "class1": "数码"}
-            #data = {"class2": ["iphone", "荣耀", "三星", "小米", "华为", "魅族", "oppo", "vivo"], "class1": "手机"}
             data ={"class2": ["毛衣女", "针织衫女", "连衣裙", "风衣女", "裤子女", "卫衣女", "半身裙", "西装女", "打底衫女", "夹克女",  "婚纱礼服"], "class1": "女装"}
 
-            print '=================='
-            #当data中只有class1没有class2时，这里用class1中的key
             for key in data['class2']:
                 print key
                 self.start_urls.append("https://list.tmall.com/search_product.htm?spm=a220m.1000858.0.0.12753ba7yiUUUi&q="+key+"&sort=d&style=g&from=mallfp..pc_1_searchbutton&type=pc#J_Filter")
@@ -85,7 +78,7 @@ class TaobaodataSpider(scrapy.Spider):
       
             
     def parse(self, response):
-        #获取到每一个框框
+        #获取到每一个商品框
         divs = response.xpath('//*[@id="J_ItemList"]/div')
         if divs:
             print '-----------succces-----------'
@@ -99,6 +92,8 @@ class TaobaodataSpider(scrapy.Spider):
 
             item = TaobaoDataItem()
             if len(div.xpath('div/div[3]/a/text()'))>0 or len(div.xpath('div/p[2]/a/text()'))>0:
+                
+                #以下的xpath可能有变动，自己微调
                 if len(div.xpath('div/p[2]/a/text()')) > 0 :
                     item['title'] = div.xpath('div/p[2]/a/text()')[0].extract().strip() if len(div.xpath('div/p[2]/a/text()'))>0 else ''
                 else:
