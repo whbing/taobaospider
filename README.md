@@ -14,8 +14,9 @@ Python 2.7.12 (v2.7.12:d33e0cf91556, Jun 27 2016, 15:24:40) [MSC v.1500 64 bit (
 
 ```
 
-### 2. 安装pip(或其他包管理工具)
+### 2. 安装pip
 
+或其他包管理工具也可以
 windows:点击https://pypi.python.org/pypi/pip 下载pip-\*.\*.\*.tar.gz (md5, pgp)
 
 解压后进入文件夹执行：`python setup.py install`
